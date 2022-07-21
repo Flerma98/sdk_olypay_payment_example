@@ -73,7 +73,7 @@ class _MainPageState extends State<MainPage> {
 
   Future<void> _openPaySdk() async {
     try {
-      var amount = double.tryParse(_textController.text);
+      final amount = double.tryParse(_textController.text);
       if (amount == null) throw "Invalid amount";
       final ticket =
           await AndroidMethods.makePayOliPay(mount: amount, reference: "TEST");
