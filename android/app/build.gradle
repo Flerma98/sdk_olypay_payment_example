@@ -57,6 +57,7 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+            //ALLOW TO ADD LIBS FILES IN RELEASE
             shrinkResources false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -74,5 +75,5 @@ dependencies {
     implementation files('libs/olipaysdk-release.aar')
     implementation files('libs/emvlibrary-release.aar')
     implementation 'com.google.code.ksoap2-android:ksoap2-android:3.6.4'
-    implementation 'io.sentry:sentry:6.3.0'
+    implementation 'io.sentry:sentry:1.7.30'
 }
