@@ -77,9 +77,29 @@ class _MainPageState extends State<MainPage> {
       if (amount == null) throw "Invalid amount";
       final ticket =
           await AndroidMethods.makePayOliPay(mount: amount, reference: "TEST");
-      print(ticket.toString());
+      if (mounted) {
+        await dialogInformSomething(context,
+            title: "Ticket", content: ticket.toString());
+      }
     } catch (error) {
-      print(error.toString());
+      if (mounted) {
+        await dialogInformSomething(context,
+            title: "Error", content: error.toString());
+      }
     }
+  }
+
+  static Future<void> dialogInformSomething(final BuildContext context,
+      {final String? title, final String? content}) async {
+    return await showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+                title: (title != null) ? Text(title.trim()) : null,
+                content: (content != null) ? Text(content.trim()) : null,
+                actions: [
+                  TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text("OK"))
+                ]));
   }
 }
